@@ -9,11 +9,33 @@
         rosmet rctl
         losmet lctl
         ;; Mapping lalt to lwin on windows
+        lalt @losalt
+        lang lctl
+        wordmov lctl
+        line-begin home
+        line-end end
+        remove-to-line-begin (multi S-home bspc)
+        m_spc (multi lalt spc)
+    )
+)
+
+(platform (linux)
+    (defalias
+        rosmain rctl
+        losmain lctl
+        rosalt ralt
+        losalt lalt
+        rossft rsft
+        lossft lsft
+        rosmet rctl
+        losmet lctl
+        ;; Mapping lalt to lwin on windows
         lalt lmet
         lang (multi lctl spc)
         wordmov lctl
-        linebegin home
-        lineend end
+        line-begin home
+        line-end end
+        remove-to-line-begin (multi S-home bspc)
         m_spc (multi lalt spc)
     )
 )
@@ -31,8 +53,9 @@
         lalt lalt
         lang caps
         wordmov lalt
-        linebegin (multi @losmain left)
-        lineend (multi @losmain right)
+        line-begin (multi @losmain left)
+        line-end (multi @losmain right)
+        remove-to-line-begin (multi @losmain bspc)
         m_spc  (multi @losmain spc)
     )
 )
@@ -81,9 +104,9 @@
   m_j    (multi @losmain j)
   m_k    (multi @losmain k)
   m_l    (multi @losmain l)
-  m_;  (multi @losmain ;)
-  m_'  (multi @losmain ')
   m_ret  (multi @losmain ret)
+  m_;  @m_ret
+  m_'  (multi @losmain ')
 
   ;; --- Row 4 ---
   ;; 注意：Shift 键通常不在此处理，保持透传或单独定义
